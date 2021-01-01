@@ -1,0 +1,6 @@
+module Pods_sortTable_sortTableTests {
+  umbrella header "Pods-sortTable-sortTableTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

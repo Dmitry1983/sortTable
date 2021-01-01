@@ -1,0 +1,6 @@
+module Pods_sortTable {
+  umbrella header "Pods-sortTable-umbrella.h"
+
+  export *
+  module * { export * }
+}
