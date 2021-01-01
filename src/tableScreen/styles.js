@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#2A2C34',
     borderTopEndRadius: 10,
     borderTopStartRadius: 10,
-    height: 70,
+    height: 60,
   },
   tableRow: {
     flexDirection: 'row',

@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  Alert,
-  StyleSheet,
-} from 'react-native'
+import { Text, View, FlatList, TouchableOpacity, Alert } from 'react-native'
 import { initialState, columnsInitialState } from '../initialState'
 import { styles } from './styles'
 import _ from 'lodash'
@@ -36,10 +29,19 @@ export const Table = () => {
               style={styles.columnHeader}
               onPress={() => sortTable(column)}
             >
-              <Text style={styles.columnHeaderTxt}>
-                {column + ' '}
+              <Text
+                style={{
+                  ...styles.columnHeaderTxt,
+                  color:
+                    (selectedColumn === column &&
+                      (direction === 'desc' ? '#ff4720' : '#58c566')) ||
+                    'white',
+                }}
+              >
+                {column.toUpperCase() + ''}
                 {selectedColumn === column &&
-                  (direction === 'desc' ? '\u003E' : '\u003C')}
+                  //   (direction === 'desc' ? '\u003E' : '\u003C')
+                  (direction === 'desc' ? '' : '')}
               </Text>
             </TouchableOpacity>
           )
@@ -102,8 +104,8 @@ export const Table = () => {
             <TouchableOpacity
               style={{
                 ...styles.tableRow,
-                borderBottomWidth:
-                  index < pets.length - 1 ? StyleSheet.hairlineWidth : null,
+                // borderBottomWidth:
+                //   index < pets.length - 1 ? StyleSheet.hairlineWidth : null,
                 backgroundColor: index % 2 == 1 ? 'lightgrey' : '#FFFFFF',
                 borderBottomLeftRadius: index === pets.length - 1 ? 10 : 0,
                 borderBottomRightRadius: index === pets.length - 1 ? 10 : 0,
