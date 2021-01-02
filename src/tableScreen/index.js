@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 export const Table = () => {
   const [pets, setPets] = useState(initialState)
-  const [columns, setColumns] = useState(columnsInitialState)
+  const [columns] = useState(columnsInitialState)
   const [direction, setDirection] = useState(null)
   const [selectedColumn, setSelectedColumn] = useState(null)
   const [selectRow, setSelectRow] = useState(null)
@@ -26,7 +26,13 @@ export const Table = () => {
           return (
             <TouchableOpacity
               key={index}
-              style={styles.columnHeader}
+              style={{
+                ...styles.columnHeader,
+                borderLeftWidth: index === 0 ? 0 : 0.5,
+                borderLeftColor: 'white',
+                height: '60%',
+              }}
+              activeOpacity={1}
               onPress={() => sortTable(column)}
             >
               <Text
@@ -39,9 +45,9 @@ export const Table = () => {
                 }}
               >
                 {column.toUpperCase() + ''}
-                {selectedColumn === column &&
+                {/* {selectedColumn === column &&
                   //   (direction === 'desc' ? '\u003E' : '\u003C')
-                  (direction === 'desc' ? '' : '')}
+                  (direction === 'desc' ? '' : '')} */}
               </Text>
             </TouchableOpacity>
           )
@@ -117,46 +123,55 @@ export const Table = () => {
                 }
               }}
             >
-              <Text
+              <View
                 style={{
-                  ...styles.columnRowTxt,
-                  fontWeight: selectRow === item ? 'bold' : null,
+                  ...styles.tableRow,
+                  backgroundColor: selectRow === item ? 'lightgreen' : null,
+                  borderBottomLeftRadius: index === pets.length - 1 ? 10 : 0,
+                  borderBottomRightRadius: index === pets.length - 1 ? 10 : 0,
                 }}
               >
-                {item.Name}
-              </Text>
-              <Text
-                style={{
-                  ...styles.columnRowTxt,
-                  fontWeight: selectRow === item ? 'bold' : null,
-                }}
-              >
-                {item.Gender}
-              </Text>
-              <Text
-                style={{
-                  ...styles.columnRowTxt,
-                  fontWeight: selectRow === item ? 'bold' : null,
-                }}
-              >
-                {item.Breed}
-              </Text>
-              <Text
-                style={{
-                  ...styles.columnRowTxt,
-                  fontWeight: selectRow === item ? 'bold' : null,
-                }}
-              >
-                {item.Weight}
-              </Text>
-              <Text
-                style={{
-                  ...styles.columnRowTxt,
-                  fontWeight: selectRow === item ? 'bold' : null,
-                }}
-              >
-                {item.Age}
-              </Text>
+                <Text
+                  style={{
+                    ...styles.columnRowTxt,
+                    // fontWeight: selectRow === item ? 'bold' : null,
+                  }}
+                >
+                  {item.Name}
+                </Text>
+                <Text
+                  style={{
+                    ...styles.columnRowTxt,
+                    //fontWeight: selectRow === item ? 'bold' : null,
+                  }}
+                >
+                  {item.Gender}
+                </Text>
+                <Text
+                  style={{
+                    ...styles.columnRowTxt,
+                    //fontWeight: selectRow === item ? 'bold' : null,
+                  }}
+                >
+                  {item.Breed}
+                </Text>
+                <Text
+                  style={{
+                    ...styles.columnRowTxt,
+                    //fontWeight: selectRow === item ? 'bold' : null,
+                  }}
+                >
+                  {item.Weight}
+                </Text>
+                <Text
+                  style={{
+                    ...styles.columnRowTxt,
+                    //fontWeight: selectRow === item ? 'bold' : null,
+                  }}
+                >
+                  {item.Age}
+                </Text>
+              </View>
             </TouchableOpacity>
           )
         }}
